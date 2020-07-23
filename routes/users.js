@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const { body, validationResult } = require('express-validator');
+const bcrypt = require('bcryptjs');
 
 const User = require('../models/User');
 
@@ -38,6 +39,11 @@ router.post(
         email,
         password,
       });
+
+      const salt = await bcrypt.genSalt(10);
+      user.password = await bcrypt.hash(password, salt);
+      await user.save();
+      res.send('User saved!');
     } catch (err) {
       console.error(err.message);
       res.status(500).send('Server Error');
