@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import ContactContext from '../../context/contact/contactContext';
-import { DELETE_CONTACT } from '../../context/types';
 
 const ContactItem = ({ contact }) => {
   const contactContext = useContext(ContactContext);
