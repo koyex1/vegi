@@ -6,9 +6,13 @@ import About from './components/pages/About';
 import Navbar from './components/layout/Navbar';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
-
+import setAuthToken from './utils/setAuthToken';
 import ContactState from './context/contact/ContactState';
 import AuthState from './context/auth/AuthState';
+
+if (localStorage.token) {
+  setAuthToken(localStorage.token);
+}
 
 const App = () => {
   return (
