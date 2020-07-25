@@ -8,8 +8,6 @@ import {
   SET_CURRENT,
   CLEAR_CURRENT,
   UPDATE_CONTACT,
-  FILTER_CONTACTS,
-  CLEAR_FILTER,
 } from '../types';
 
 const ContactState = (props) => {
@@ -65,10 +63,6 @@ const ContactState = (props) => {
   const updateContact = (contact) => {
     dispatch({ type: UPDATE_CONTACT, payload: contact });
   };
-
-  // Filter Contacts
-
-  // Clear Filter
 
   return (
     <ContactContext.Provider
