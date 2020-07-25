@@ -1,20 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import AuthContext from '../../context/auth/authContext';
 
 const Register = () => {
+  const authContext = useContext(AuthContext);
+
+  const { register } = authContext;
+
   const [user, setUser] = useState({
     name: '',
     email: '',
     password: '',
-    password2: '',
   });
 
-  const { name, email, password, password2 } = user;
+  const { name, email, password } = user;
 
   const onChange = (e) => setUser({ ...user, [e.target.name]: e.target.value });
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log('Registration submission');
+    register({
+      name,
+      email,
+      password,
+    });
   };
 
   return (
@@ -52,18 +60,6 @@ const Register = () => {
             type='password'
             name='password'
             value={password}
-            onChange={onChange}
-            required
-            minLength='6'
-          />
-        </div>
-        <div className='form-group'>
-          <label htmlFor='password2'>Confirm Password</label>
-          <input
-            id='password2'
-            type='password'
-            name='password2'
-            value={password2}
             onChange={onChange}
             required
             minLength='6'
