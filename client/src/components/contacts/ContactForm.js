@@ -6,7 +6,7 @@ const ContactForm = () => {
 
   const { addContact, updateContact, current, clearCurrent } = contactContext;
   useEffect(() => {
-    if (current !== null) {
+    if (current != null) {
       setContact(current);
     } else {
       setContact({
@@ -25,7 +25,6 @@ const ContactForm = () => {
     type: 'personal',
   });
 
-  console.log('CONTACT', contact);
   const { name, email, phone, type } = contact;
 
   const onChange = (e) =>
@@ -33,7 +32,7 @@ const ContactForm = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(contact);
+    // console.log('CONTACT', contact);
     if (current === null) {
       addContact(contact);
     } else {
