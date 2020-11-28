@@ -3,12 +3,9 @@ import React from 'react';
 const About = () => {
   return (
     <div>
-      <h1>About This App</h1>
+      <h1>About This Site</h1>
       <p className='my-1'>
-        This is a full stack web app facilitating contact management.
-      </p>
-      <p className='bg-dark p'>
-        <strong>Version: </strong> 1.0.0
+        CRUD operation on products with Admin and User role
       </p>
     </div>
   );

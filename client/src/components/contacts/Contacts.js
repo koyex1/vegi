@@ -13,7 +13,7 @@ const Contacts = () => {
   }, []);
 
   if (contacts.length === 0) {
-    return <h4>Please add a contact</h4>;
+    return <h4>Please add a Product</h4>;
   }
 
   return (

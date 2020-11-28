@@ -46,7 +46,7 @@ const Navbar = () => {
   return (
     <div className='navbar bg-primary'>
       <h1>
-        <i className='fas fa-id-card-alt' /> Contact Manager
+        <i className='fas fa-tasks' />  Manage Products
       </h1>
       <ul>{isAuthenticated ? authLinks : guestLinks}</ul>
     </div>

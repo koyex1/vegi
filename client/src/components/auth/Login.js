@@ -1,12 +1,16 @@
 import React, { useState, useContext, useEffect } from 'react';
+//import createcontext
 import AuthContext from '../../context/auth/authContext';
 
 const Login = (props) => {
+//use createdcontext
   const authContext = useContext(AuthContext);
   const { login, isAuthenticated } = authContext;
 
+  //do after rendering
   useEffect(() => {
     if (isAuthenticated) {
+	//redirects
       props.history.push('/');
     }
   }, [isAuthenticated, props.history]);
