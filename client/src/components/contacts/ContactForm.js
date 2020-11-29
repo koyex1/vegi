@@ -11,21 +11,17 @@ const ContactForm = () => {
     } else {
       setContact({
         name: '',
-        email: '',
-        phone: '',
-        type: 'personal',
+		description: '',
       });
     }
   }, [contactContext, current]);
 
   const [contact, setContact] = useState({
     name: '',
-    email: '',
-    phone: '',
-    type: 'personal',
+	description: '',
   });
 
-  const { name, email, phone, type } = contact;
+  const { name, description } = contact;
 
   const onChange = (e) =>
     setContact({ ...contact, [e.target.name]: e.target.value });
@@ -52,42 +48,22 @@ const ContactForm = () => {
       </h2>
       <input
         type='text'
-        placeholder='Name'
+        placeholder='Product Name'
         name='name'
         value={name}
         onChange={onChange}
       />
-      <input
-        type='email'
-        placeholder='Email'
-        name='email'
-        value={email}
+
+	  <textarea
+        
+		rows="4"
+		cols="50"
+        placeholder='Description'
+        name='description'
+        value={description}
         onChange={onChange}
       />
-      <input
-        type='text'
-        placeholder='Phone'
-        name='phone'
-        value={phone}
-        onChange={onChange}
-      />
-      <h5>Contact Type</h5>
-      <input
-        type='radio'
-        name='type'
-        value='personal'
-        checked={type === 'personal'}
-        onChange={onChange}
-      />{' '}
-      Personal{' '}
-      <input
-        type='radio'
-        name='type'
-        value='professional'
-        checked={type === 'professional'}
-        onChange={onChange}
-      />{' '}
-      Professional
+      
       <div>
         <input
           type='submit'

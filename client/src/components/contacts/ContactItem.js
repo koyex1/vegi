@@ -5,7 +5,7 @@ const ContactItem = ({ contact }) => {
   const contactContext = useContext(ContactContext);
   const { deleteContact, setCurrent, clearCurrent } = contactContext;
 
-  const { _id, name, email, phone, type } = contact;
+  const { _id, name, description} = contact;
 
   const onDelete = () => {
     deleteContact(_id);
@@ -14,39 +14,25 @@ const ContactItem = ({ contact }) => {
 
   return (
     <div className='card bg-light'>
-      <h3 className='text-primary text-left'>
-        {name}{' '}
-        <span
-          style={{ float: 'right' }}
-          className={
-            'badge ' +
-            (type === 'professional' ? 'badge-success' : 'badge-primary')
-          }
-        >
-          {type.charAt(0).toUpperCase() + type.slice(1)}
-        </span>
+      <h3 className='text-primary text-left' >
+          {name}{' '}
       </h3>
       <ul className='list'>
-        {email && (
+        
+		{description && (
           <li>
-            <i className='fas fa-envelope-open'> {email}</i>
+            <i className='fas fa-info-circle'> {description}</i>
           </li>
         )}
-        {phone && (
-          <li>
-            <i className='fas fa-phone'>{phone}</i>
-          </li>
-        )}
+       
       </ul>
       <p>
         <button
-          className='btn btn-dark btn-sm'
+          className='btn btn-dark btn-sm far fa-edit'
           onClick={() => setCurrent(contact)}
         >
-          Edit
         </button>
-        <button className='btn btn-danger btn-sm' onClick={onDelete}>
-          Delete
+        <button className='btn btn-danger btn-sm far fa-trash-alt' onClick={onDelete}>
         </button>
       </p>
     </div>
