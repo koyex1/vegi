@@ -1,40 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
-//import createcontext
-import AuthContext from '../../context/auth/authContext';
-
-const Login = (props) => {
-//use createdcontext
-  const authContext = useContext(AuthContext);
-  const { login, isAuthenticated } = authContext;
-
-  //do after rendering
-  useEffect(() => {
-    if (isAuthenticated) {
-	//redirects
-      props.history.push('/');
-    }
-  }, [isAuthenticated, props.history]);
-
-  const [user, setUser] = useState({
-    email: '',
-    password: '',
-  });
-
-  const { email, password } = user;
-
-  const onChange = (e) => setUser({ ...user, [e.target.name]: e.target.value });
-
-  const onSubmit = (e) => {
-    e.preventDefault();
-    login({
-      email,
-      password,
-    });
-  };
-
-  return (
-  
-    <div className='form-container'>
+<div className='form-container'>
       <h1>
         <span className='text-primary'>Login</span>
       </h1>
@@ -70,7 +34,11 @@ const Login = (props) => {
         />
       </form>
     </div>
-  );
-};
-
-export default Login;
+	
+	
+	
+	
+	
+	
+	
+	

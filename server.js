@@ -5,7 +5,7 @@ var bodyParser = require('body-parser');
 const app = express();
 
 // app.get('/', (req, res) =>
-//   res.json({ msg: 'Welcome to the Contact Manager API' })
+//   res.json({ msg: 'Welcome to the Product Manager API' })
 // );
 
 app.use(bodyParser.json()); // for parsing application/json
@@ -15,7 +15,7 @@ app.use(express.json({ extended: false }));
 //Define Routes
 app.use('/api/users', require('./routes/users'));
 app.use('/api/auth', require('./routes/auth'));
-app.use('/api/contacts', require('./routes/contacts'));
+app.use('/api/products', require('./routes/products'));
 
 connectDB();
 

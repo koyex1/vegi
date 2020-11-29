@@ -1,14 +1,14 @@
 import React, { useContext } from 'react';
-import ContactContext from '../../context/contact/contactContext';
+import ProductContext from '../../context/product/productContext';
 
-const ContactItem = ({ contact }) => {
-  const contactContext = useContext(ContactContext);
-  const { deleteContact, setCurrent, clearCurrent } = contactContext;
+const ProductItem = ({ product }) => {
+  const productContext = useContext(ProductContext);
+  const { deleteProduct, setCurrent, clearCurrent } = productContext;
 
-  const { _id, name, description} = contact;
+  const { _id, name, description} = product;
 
   const onDelete = () => {
-    deleteContact(_id);
+    deleteProduct(_id);
     clearCurrent();
   };
 
@@ -29,7 +29,7 @@ const ContactItem = ({ contact }) => {
       <p>
         <button
           className='btn btn-dark btn-sm far fa-edit'
-          onClick={() => setCurrent(contact)}
+          onClick={() => setCurrent(product)}
         >
         </button>
         <button className='btn btn-danger btn-sm far fa-trash-alt' onClick={onDelete}>
@@ -39,4 +39,4 @@ const ContactItem = ({ contact }) => {
   );
 };
 
-export default ContactItem;
+export default ProductItem;

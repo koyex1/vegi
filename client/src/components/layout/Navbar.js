@@ -1,14 +1,14 @@
 import React, { Fragment, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import AuthContext from '../../context/auth/authContext';
-import ContactContext from '../../context/contact/contactContext';
+import ProductContext from '../../context/product/productContext';
 
 const Navbar = () => {
   const authContext = useContext(AuthContext);
-  const contactContext = useContext(ContactContext);
+  const productContext = useContext(ProductContext);
 
   const { isAuthenticated, user, logout, loadUser } = authContext;
-  const { clearContacts } = contactContext;
+  const { clearProducts } = productContext;
 
   useEffect(() => {
     loadUser();
@@ -17,7 +17,7 @@ const Navbar = () => {
 
   const onLogout = () => {
     logout();
-    clearContacts();
+    clearProducts();
   };
 
   const authLinks = (

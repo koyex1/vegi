@@ -7,7 +7,7 @@ import Navbar from './components/layout/Navbar';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import setAuthToken from './utils/setAuthToken';
-import ContactState from './context/contact/ContactState';
+import ProductState from './context/product/ProductState';
 import AuthState from './context/auth/AuthState';
 
 import PrivateRoute from './components/routing/PrivateRoute';
@@ -19,7 +19,7 @@ if (localStorage.token) {
 const App = () => {
   return (
     <AuthState>
-      <ContactState>
+      <ProductState>
         <Router>
           <Fragment>
             <Navbar />
@@ -29,11 +29,12 @@ const App = () => {
                 <Route exact path='/about' component={About} />
                 <Route exact path='/register' component={Register} />
                 <Route exact path='/login' component={Login} />
+				<Route exact path='/login' component={Login} />
               </Switch>
             </div>
           </Fragment>
         </Router>
-      </ContactState>
+      </ProductState>
     </AuthState>
   );
 };

@@ -3,25 +3,25 @@ const router = express.Router();
 const auth = require('../middleware/auth');
 const { body, validationResult } = require('express-validator');
 
-const Contact = require('../models/Contact');
+const Product = require('../models/Product');
 
-// @route   GET api/contacts
-// @desc    Get Contacts
+// @route   GET api/products
+// @desc    Get Products
 // @access  Private
 router.get('/', auth, async (req, res) => {
   try {
-    const contacts = await Contact.find({ user: req.user.id }).sort({
+    const products = await Product.find({ user: req.user.id }).sort({
       date: -1,
     });
-    res.json(contacts);
+    res.json(products);
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server Error');
   }
 });
 
-// @route   POST api/contacts
-// @desc    Create a Contact
+// @route   POST api/products
+// @desc    Create a Product
 // @access  Private
 router.post(
   '/',
@@ -35,15 +35,15 @@ router.post(
     const { name, description } = req.body;
 
     try {
-      const newContact = new Contact({
+      const newProduct = new Product({
         name,
 		description,
         user: req.user.id,
       });
 
-      const contact = await newContact.save();
+      const product = await newProduct.save();
 
-      res.json(contact);
+      res.json(product);
     } catch (err) {
       console.error(err.message);
       res.status(500).send('Server Error');
@@ -51,57 +51,57 @@ router.post(
   }
 );
 
-// @route   PUT api/contacts/:id
-// @desc    Update a Contact
+// @route   PUT api/products/:id
+// @desc    Update a Product
 // @access  Private
 router.put('/:id', auth, async (req, res) => {
   const { name, description } = req.body;
 
-  // Build contact object
-  const contactFields = {};
-  if (name) contactFields.name = name;
-  if (description) contactFields.description = description;
+  // Build product object
+  const productFields = {};
+  if (name) productFields.name = name;
+  if (description) productFields.description = description;
 
   try {
-    let contact = await Contact.findById(req.params.id);
+    let product = await Product.findById(req.params.id);
 
-    if (!contact) return res.status(404).json({ msg: 'Contact not found' });
+    if (!product) return res.status(404).json({ msg: 'Product not found' });
 
-    // Make sure user owns contact
-    if (contact.user.toString() !== req.user.id) {
+    // Make sure user owns product
+    if (product.user.toString() !== req.user.id) {
       return res.status(401).json({ msg: 'Not authorized' });
     }
 
-    contact = await Contact.findByIdAndUpdate(
+    product = await Product.findByIdAndUpdate(
       req.params.id,
-      { $set: contactFields },
+      { $set: productFields },
       { new: true }
     );
 
-    res.json(contact);
+    res.json(product);
   } catch (err) {
     console.error(er.message);
     res.status(500).send('Server Error');
   }
 });
 
-// @route   DELETE api/contacts/:id
-// @desc    Delete a Contact
+// @route   DELETE api/products/:id
+// @desc    Delete a Product
 // @access  Private
 router.delete('/:id', auth, async (req, res) => {
   try {
-    let contact = await Contact.findById(req.params.id);
+    let product = await Product.findById(req.params.id);
 
-    if (!contact) return res.status(404).json({ msg: 'Contact not found' });
+    if (!product) return res.status(404).json({ msg: 'Product not found' });
 
-    // Make sure user owns contact
-    if (contact.user.toString() !== req.user.id) {
+    // Make sure user owns product
+    if (product.user.toString() !== req.user.id) {
       return res.status(401).json({ msg: 'Not authorized' });
     }
 
-    await Contact.findByIdAndRemove(req.params.id);
+    await Product.findByIdAndRemove(req.params.id);
 
-    res.json({ msg: 'Contact removed' });
+    res.json({ msg: 'Product removed' });
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server Error');

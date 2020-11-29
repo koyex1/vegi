@@ -1,40 +1,40 @@
 import {
-  ADD_CONTACT,
-  DELETE_CONTACT,
+  ADD_PRODUCT,
+  DELETE_PRODUCT,
   SET_CURRENT,
   CLEAR_CURRENT,
-  UPDATE_CONTACT,
-  CONTACT_ERROR,
-  GET_CONTACTS,
-  CLEAR_CONTACTS,
+  UPDATE_PRODUCT,
+  PRODUCT_ERROR,
+  GET_PRODUCTS,
+  CLEAR_PRODUCTS,
 } from '../types';
 
 export default (state, action) => {
   switch (action.type) {
-    case GET_CONTACTS:
+    case GET_PRODUCTS:
       return {
         ...state,
-        contacts: action.payload,
+        products: action.payload,
       };
 
-    case ADD_CONTACT:
+    case ADD_PRODUCT:
       return {
         ...state,
-        contacts: [action.payload, ...state.contacts],
+        products: [action.payload, ...state.products],
       };
 
-    case DELETE_CONTACT:
+    case DELETE_PRODUCT:
       return {
         ...state,
-        contacts: state.contacts.filter(
-          (contact) => contact._id !== action.payload
+        products: state.products.filter(
+          (product) => product._id !== action.payload
         ),
       };
 
-    case CLEAR_CONTACTS:
+    case CLEAR_PRODUCTS:
       return {
         ...state,
-        contacts: [],
+        products: [],
       };
 
     case SET_CURRENT:
@@ -49,15 +49,15 @@ export default (state, action) => {
         current: null,
       };
 
-    case UPDATE_CONTACT:
+    case UPDATE_PRODUCT:
       return {
         ...state,
-        contacts: state.contacts.map((contact) =>
-          contact._id === action.payload._id ? action.payload : contact
+        products: state.products.map((product) =>
+          product._id === action.payload._id ? action.payload : product
         ),
       };
 
-    case CONTACT_ERROR:
+    case PRODUCT_ERROR:
       return {
         ...state,
         error: action.payload,

@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react';
-import Contacts from '../contacts/Contacts';
-import ContactForm from '../contacts/ContactForm';
+import Products from '../products/Products';
+import ProductForm from '../products/ProductForm';
 import AuthContext from '../../context/auth/authContext';
 
 const Home = () => {
@@ -14,10 +14,10 @@ const Home = () => {
   return (
     <div className='grid-2'>
       <div>
-        <ContactForm />
+        <ProductForm />
       </div>
       <div>
-        <Contacts />
+        <Products />
       </div>
     </div>
   );

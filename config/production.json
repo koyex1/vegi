@@ -1,4 +1,4 @@
 {
-  "mongoURI": "mongodb+srv://sujit:myDatabase@mern.apqfp.mongodb.net/contact-manager?retryWrites=true&w=majority",
+  "mongoURI": "mongodb+srv://sujit:myDatabase@mern.apqfp.mongodb.net/product-manager?retryWrites=true&w=majority",
   "jwtSecret": "secret@007"
 }

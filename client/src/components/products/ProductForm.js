@@ -1,38 +1,38 @@
 import React, { useState, useContext, useEffect } from 'react';
-import ContactContext from '../../context/contact/contactContext';
+import ProductContext from '../../context/product/productContext';
 
-const ContactForm = () => {
-  const contactContext = useContext(ContactContext);
+const ProductForm = () => {
+  const productContext = useContext(ProductContext);
 
-  const { addContact, updateContact, current, clearCurrent } = contactContext;
+  const { addProduct, updateProduct, current, clearCurrent } = productContext;
   useEffect(() => {
     if (current != null) {
-      setContact(current);
+      setProduct(current);
     } else {
-      setContact({
+      setProduct({
         name: '',
 		description: '',
       });
     }
-  }, [contactContext, current]);
+  }, [productContext, current]);
 
-  const [contact, setContact] = useState({
+  const [product, setProduct] = useState({
     name: '',
 	description: '',
   });
 
-  const { name, description } = contact;
+  const { name, description } = product;
 
   const onChange = (e) =>
-    setContact({ ...contact, [e.target.name]: e.target.value });
+    setProduct({ ...product, [e.target.name]: e.target.value });
 
   const onSubmit = (e) => {
     e.preventDefault();
-    // console.log('CONTACT', contact);
+    // console.log('PRODUCT', product);
     if (current === null) {
-      addContact(contact);
+      addProduct(product);
     } else {
-      updateContact(contact);
+      updateProduct(product);
     }
     clearAll();
   };
@@ -44,7 +44,7 @@ const ContactForm = () => {
   return (
     <form onSubmit={onSubmit}>
       <h2 className='text-primary'>
-        {current ? 'Edit Contact' : 'Add Contact'}
+        {current ? 'Edit Product' : 'Add Product'}
       </h2>
       <input
         type='text'
@@ -67,7 +67,7 @@ const ContactForm = () => {
       <div>
         <input
           type='submit'
-          value={current ? 'Update Contact' : 'Add Contact'}
+          value={current ? 'Update Product' : 'Add Product'}
           className='btn btn-primary btn-block'
         />
       </div>
@@ -82,4 +82,4 @@ const ContactForm = () => {
   );
 };
 
-export default ContactForm;
+export default ProductForm;
