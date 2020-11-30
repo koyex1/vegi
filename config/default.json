@@ -1,3 +1,4 @@
+olumideolaolukoyenikan
 {
   "mongoURI": "mongodb://localhost:27017/olumide",
   "jwtSecret": "secret@007"
