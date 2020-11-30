@@ -6,6 +6,7 @@ import {
   GET_PRODUCTS,
   ADD_PRODUCT,
   DELETE_PRODUCT,
+  ALL_PRODUCTS,
   SET_CURRENT,
   CLEAR_CURRENT,
   CLEAR_PRODUCTS,
@@ -29,6 +30,18 @@ const ProductState = (props) => {
       //console.log('RESPONSE', res);
 
       dispatch({ type: GET_PRODUCTS, payload: res.data });
+    } catch (error) {
+      dispatch({ type: PRODUCT_ERROR, payload: error.response.msg });
+    }
+  };
+  
+    //All Products
+  const allProducts = async () => {
+    try {
+      const res = await axios.get('/api/products/all');
+      //console.log('RESPONSE', res);
+
+      dispatch({ type: ALL_PRODUCTS, payload: res.data });
     } catch (error) {
       dispatch({ type: PRODUCT_ERROR, payload: error.response.msg });
     }
@@ -109,6 +122,7 @@ const ProductState = (props) => {
         setCurrent,
         clearCurrent,
         getProducts,
+		allProducts,
         clearProducts,
       }}
     >

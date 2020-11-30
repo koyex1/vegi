@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import ProductContext from '../../context/product/productContext';
 import {Button, Modal} from 'react-bootstrap';
 
-const ProductForm = () => {
+const AdminForm = () => {
 
   const [show, setShow] = useState(false);
 
@@ -50,7 +50,6 @@ const ProductForm = () => {
   };
 
   return (
-  
 
 
  <div>
@@ -109,7 +108,9 @@ const ProductForm = () => {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          
+          <Button variant="primary" onClick={handleClose}>
+            Save Changes
+          </Button>
         </Modal.Footer>
       </Modal>
   
@@ -121,4 +122,4 @@ const ProductForm = () => {
   );
 };
 
-export default ProductForm;
+export default AdminForm;

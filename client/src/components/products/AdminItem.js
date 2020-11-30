@@ -1,10 +1,8 @@
 import React, { useContext } from 'react';
 import ProductContext from '../../context/product/productContext';
-import ProductForm from './ProductForm';
 import Table from 'react-bootstrap/Table';
 
-
-const ProductItem = ({ product }) => {
+const AdminItem = ({ product }) => {
   const productContext = useContext(ProductContext);
   const { deleteProduct, setCurrent, clearCurrent } = productContext;
 
@@ -14,15 +12,10 @@ const ProductItem = ({ product }) => {
     deleteProduct(_id);
     clearCurrent();
   };
-  
-  const onEdit = () => {
-	setCurrent(product);
-  };
 
   return (
   
   <div>
-  
   <Table striped bordered hover>
   <thead>
     <tr>
@@ -47,7 +40,7 @@ const ProductItem = ({ product }) => {
       <td>  <p>
         <button
           className='btn btn-dark btn-sm far fa-edit'
-          onClick={onEdit}
+          onClick={() => setCurrent(product)}
         >
         </button>
         <button className='btn btn-danger btn-sm far fa-trash-alt' onClick={onDelete}>
@@ -62,4 +55,4 @@ const ProductItem = ({ product }) => {
   );
 };
 
-export default ProductItem;
+export default AdminItem;

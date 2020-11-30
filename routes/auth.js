@@ -45,6 +45,8 @@ router.post(
         },
       };
 
+	  //on signin a jwtoken is generated which is verified 
+	  //during every request post url,auth,async
       jwt.sign(
         payload,
         config.get('jwtSecret'),

@@ -1,4 +1,11 @@
 import React, { useState, useContext, useEffect } from 'react';
+import {BrowserRouter as Router, Route, Link, Switch, NavLink} from 'react-router-dom';
+import SignUpForm from './SignUpForm';
+import SignInForm from './SignInForm';
+
+
+
+
 //import createcontext
 import AuthContext from '../../context/auth/authContext';
 
@@ -7,13 +14,7 @@ const Login = (props) => {
   const authContext = useContext(AuthContext);
   const { login, isAuthenticated } = authContext;
 
-  //do after rendering
-  useEffect(() => {
-    if (isAuthenticated) {
-	//redirects
-      props.history.push('/');
-    }
-  }, [isAuthenticated, props.history]);
+
 
   const [user, setUser] = useState({
     email: '',
@@ -31,45 +32,54 @@ const Login = (props) => {
       password,
     });
   };
+  
+    //do after rendering
+  useEffect(() => {
+    if (isAuthenticated) {
+	//redirects
+      //props.history.push('/');
+	  //user.email = "olumide.koyenikan@gmail.com";
+
+	  props.history.push('/admin');
+	  
+    }
+  }, [isAuthenticated, email, props.history]);
 
   return (
   
-    <div className='form-container'>
-      <h1>
-        <span className='text-primary'>Login</span>
-      </h1>
-      <form onSubmit={onSubmit}>
-        <div className='form-group'>
-          <label htmlFor='email'>Email Address</label>
-          <input
-            id='email'
-            type='email'
-            name='email'
-            value={email}
-            onChange={onChange}
-            required
-          />
-        </div>
-        <div className='form-group'>
-          <label htmlFor='password'>Password</label>
-          <input
-            id='password'
-            type='password'
-            name='password'
-            value={password}
-            onChange={onChange}
-            required
-            minLength='6'
-          />
-        </div>
-
-        <input
-          type='submit'
-          value='Login'
-          className='btn btn-primary btn-block'
-        />
-      </form>
-    </div>
+  
+  
+  
+  
+   <Router>
+	
+	<Switch>	
+	
+   
+     
+	 <div className="App__Form">
+	 <div className="PageSwitcher">
+	 <NavLink to="/login" activeClassName= "PageSwitcher__Item--Active" className="PageSwitcher__Item">Sign In</NavLink>
+	 <NavLink exact to="/register" activeClassName= "PageSwitcher__Item--Active" className="PageSwitcher__Item">Sign Up</NavLink>
+	 </div>
+	 <div className="FormTitle">
+        <NavLink to="/login" activeClassName= "FormTitle__Link--Active" className="FormTitle__Link">Sign In</NavLink> or
+		<NavLink exact to="/register" activeClassName= "FormTitle__Link--Active" className="FormTitle__Link">Sign Up</NavLink>
+     </div>
+	 
+	 
+	 <Route exact path="/register" component={SignUpForm}></Route>
+	 <Route path="/login" component={SignInForm}></Route>
+	 
+     
+	 </div>
+	 
+	 
+	 
+	 
+	 </Switch>
+	 
+	 </Router>
   );
 };
 

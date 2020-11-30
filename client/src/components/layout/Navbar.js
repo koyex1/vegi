@@ -1,9 +1,9 @@
 import React, { Fragment, useContext, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link ,Redirect} from 'react-router-dom';
 import AuthContext from '../../context/auth/authContext';
 import ProductContext from '../../context/product/productContext';
 
-const Navbar = () => {
+const Navbar = (props) => {
   const authContext = useContext(AuthContext);
   const productContext = useContext(ProductContext);
 
@@ -13,18 +13,26 @@ const Navbar = () => {
   useEffect(() => {
     loadUser();
     // eslint-disable-next-line
+	
+	
   }, []);
 
-  const onLogout = () => {
+
+  
+  const OnLogout = () => {
+  	
     logout();
     clearProducts();
+	
+	
+
   };
 
   const authLinks = (
     <Fragment>
       <li>Hello {user && user.name}</li>
       <li>
-        <a onClick={onLogout} href='#!'>
+        <a onClick={OnLogout} href='#!'>
           <i className='fas fa-sign-out-alt'></i>
           <span className='hide-sm'>Logout</span>
         </a>
@@ -35,16 +43,13 @@ const Navbar = () => {
   const guestLinks = (
     <Fragment>
       <li>
-        <Link to='/register'>Register</Link>
-      </li>
-      <li>
         <Link to='/login'>Login</Link>
       </li>
     </Fragment>
   );
 
   return (
-    <div className='navbar bg-primary'>
+    <div className='navbar customnav'>
       <h1>
         <i className='fas fa-tasks' />  Manage Products
       </h1>

@@ -1,9 +1,9 @@
 import React, { useContext, useEffect } from 'react';
-import Products from '../products/Products';
-import ProductForm from '../products/ProductForm';
+import Admins from '../products/Admins';
+import AdminForm from '../products/AdminForm';
 import AuthContext from '../../context/auth/authContext';
 
-const Home = () => {
+const Admin = () => {
   const authContext = useContext(AuthContext);
 
   useEffect(() => {
@@ -14,13 +14,14 @@ const Home = () => {
   return (
     <div >
       <div>
-        <ProductForm />
+        <AdminForm />
       </div>
       <div>
-        <Products />
+        <Admins />
       </div>
     </div>
   );
 };
 
-export default Home;
+
+export default Admin;

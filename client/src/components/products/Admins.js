@@ -1,14 +1,14 @@
 import React, { Fragment, useContext, useEffect } from 'react';
-import ProductItem from './ProductItem';
+import AdminItem from './AdminItem';
 import ProductContext from '../../context/product/productContext';
 
-const Products = () => {
+const Admins = () => {
   const productContext = useContext(ProductContext);
 
-  const { products, getProducts } = productContext;
+  const { products, allProducts } = productContext;
 
   useEffect(() => {
-    getProducts();
+    allProducts();
     //eslint-disable-next-line
   }, []);
 
@@ -19,10 +19,10 @@ const Products = () => {
   return (
     <div>
       {products.map((product) => (
-        <ProductItem key={product._id} product={product} />
+        <AdminItem key={product._id} product={product} />
       ))}
     </div>
   );
 };
 
-export default Products;
+export default Admins;
