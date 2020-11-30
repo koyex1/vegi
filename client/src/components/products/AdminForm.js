@@ -54,7 +54,7 @@ const AdminForm = () => {
 
  <div>
  <Button variant="primary" onClick={handleShow}>
-       Add Product
+       Add or Edit Product
  </Button>
  
 <div>.</div>
@@ -108,9 +108,7 @@ const AdminForm = () => {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button>
+      
         </Modal.Footer>
       </Modal>
   

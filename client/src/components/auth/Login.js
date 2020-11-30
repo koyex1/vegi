@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { Fragment, useState, useContext, useEffect } from 'react';
 import {BrowserRouter as Router, Route, Link, Switch, NavLink} from 'react-router-dom';
 import SignUpForm from './SignUpForm';
 import SignInForm from './SignInForm';
@@ -54,8 +54,13 @@ const Login = (props) => {
    <Router>
 	
 	<Switch>	
-	
-   
+	<div className="App">
+	<div className="App__Aside"> <div><h4>For convenience I made a single sign up page for both the user
+	 and admin. In a real project these pages are always separated
+	 for security reasons. Well before you is a website where you can login
+	 either as an Admin role or User role. When you login, you can add products
+	 as an admin and user and when these products are added everyone sees it. But only those with the 
+	 Admin role can Update and Delete</h4></div></div>
      
 	 <div className="App__Form">
 	 <div className="PageSwitcher">
@@ -75,6 +80,7 @@ const Login = (props) => {
 	 </div>
 	 
 	 
+	 </div>
 	 
 	 
 	 </Switch>

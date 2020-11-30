@@ -14,7 +14,12 @@ const Admin = () => {
   return (
     <div >
       <div>
+	  <h5> 1. If you want to edit a product hit the edit icon on your right juxtaposed with the trash icon
+		</h5>
+		<h5> 2. Then hit the "Add or Edit" button below.
+		</h5>
         <AdminForm />
+		
       </div>
       <div>
         <Admins />

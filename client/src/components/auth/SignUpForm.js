@@ -18,9 +18,10 @@ const SignUpForm = (props) => {
     name: '',
     email: '',
     password: '',
+	role: '',
   });
 
-  const { name, email, password } = user;
+  const { name, email, password, role } = user;
 
   const onChange = (e) => setUser({ ...user, [e.target.name]: e.target.value });
 
@@ -30,6 +31,7 @@ const SignUpForm = (props) => {
       name,
       email,
       password,
+	  role,
     });
   };
 return (
@@ -61,6 +63,23 @@ return (
             required
           />
               </div>
+			  
+			  <div className="FormField">
+                <label className="FormField__Label" htmlFor="role">Role</label>
+                <select
+            id='role'
+            type='select'
+            name='role'
+            value={role}
+            onChange={onChange}
+            required
+			placeholder="select a role"
+          ><option>Select a Role</option>
+		  <option value="admin">Admin</option>
+		  <option value="user">User</option>
+		  </select>
+              </div>
+			  
 			  
 			  <div className="FormField">
                 <label className="FormField__Label" htmlFor="password">Password</label>

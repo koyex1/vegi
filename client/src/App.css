@@ -2,7 +2,6 @@
 
 /* Global Styles */
 
-
 .App {
   height: 100vh;
   display: flex;
@@ -11,8 +10,11 @@
 
 .App__Aside {
   width: 50%;
-  background-color: #66DAC7;
+  background-color: white;
+  color: black;
 }
+
+
 
 .navbar {
 background-color: #2E4158;

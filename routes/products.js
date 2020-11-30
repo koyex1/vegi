@@ -4,6 +4,7 @@ const auth = require('../middleware/auth');
 const { body, validationResult } = require('express-validator');
 
 const Product = require('../models/Product');
+const User = require('../models/User');
 
 // @route   GET api/products/
 // @desc    Get Products
@@ -82,9 +83,18 @@ router.put('/:id', auth, async (req, res) => {
     if (!product) return res.status(404).json({ msg: 'Product not found' });
 
     // Make sure user owns product
-    if (product.user.toString() !== req.user.id) {
-      return res.status(401).json({ msg: 'Not authorized' });
-    }
+    //if (product.user.toString() !== req.user.id) {
+      //return res.status(401).json({ msg: 'Not authorized' });
+    //}
+	
+	// role verification
+	let user = await User.findById(req.user.id);
+	console.log(req.user.role);
+  if (user.role !== "admin") {
+  //console.log("i am in");
+   return res.status(401).json({ msg: 'Not authorized' });
+  }
+	
 
     product = await Product.findByIdAndUpdate(
       req.params.id,
@@ -102,16 +112,24 @@ router.put('/:id', auth, async (req, res) => {
 // @route   DELETE api/products/:id
 // @desc    Delete a Product
 // @access  Private
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', auth, async (req, res) => {
   try {
     let product = await Product.findById(req.params.id);
-
     if (!product) return res.status(404).json({ msg: 'Product not found' });
 
     // Make sure user owns product
-   // if (product.user.toString() !== req.user.id) {
-    // return res.status(401).json({ msg: 'Not authorized' });
-   // }
+  //if (product.user.toString() !== req.user.id) {
+   // return res.status(401).json({ msg: 'Not authorized' });
+   //}
+  
+
+	// role verification
+	let user = await User.findById(req.user.id);
+  if (user.role !== "admin") {
+  //console.log("i am in");
+   return res.status(401).json({ msg: 'Not authorized' });
+  }
+	
 
     await Product.findByIdAndRemove(req.params.id);
 
