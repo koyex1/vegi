@@ -58,7 +58,7 @@ const Login = (props) => {
 	<div className="App">
 	<div className="App__Aside"> <div><h4>For convenience I made a single sign up page for both the user
 	 and admin. In a real project these pages are always separated
-	 for security reasons. Well before you is a website where you can login
+	 for security reasons. Well, before you is a website where you can login
 	 either as an Admin role or User role. When you login, you can add products
 	 as an admin and user and when these products are added everyone sees it. But only those with the 
 	 Admin role can Update and Delete</h4></div></div>
