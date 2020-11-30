@@ -1,4 +1,4 @@
-olumideolaolukoyenikan
+
 import {
   REGISTER_SUCCESS,
   REGISTER_FAIL,
